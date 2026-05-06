@@ -283,6 +283,66 @@
   }
   .sort-chip:active { transform: scale(0.96); }
 
+  .view-chip {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 6px 10px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    transition: all 0.15s;
+    line-height: 1;
+  }
+  .view-chip.active {
+    background: var(--ink);
+    color: var(--surface);
+    border-color: var(--ink);
+  }
+  .view-chip:active { transform: scale(0.96); }
+
+  .toolbar-bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toolbar-bottom .sort-bar {
+    flex: 1;
+    min-width: 0;
+  }
+  .view-switcher {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .series-list.covers-mode {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+  }
+  .covers-mode .series-card {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    gap: 0;
+    background: var(--surface-alt);
+  }
+  .covers-mode .cover-thumb {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    flex-shrink: unset;
+  }
+  .covers-mode .cover-thumb.placeholder {
+    font-size: 14px;
+  }
+
   /* ====== TAG FILTER BAR ====== */
   .tag-filter-bar {
     padding: 0 20px 10px;
@@ -1442,6 +1502,215 @@
     border-color: rgba(255, 90, 60, 0.3);
   }
 
+  /* ====== DONATE MODAL ====== */
+  .donate-modal { max-width: 380px; }
+  .donate-header {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .donate-big-emoji {
+    font-size: 44px;
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .donate-modal h3 {
+    text-align: center;
+  }
+  .donate-message {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    background: var(--accent-soft);
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 18px;
+    border: 1px solid rgba(255, 90, 60, 0.2);
+  }
+  .donate-amounts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .donate-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 4px;
+    background: var(--bg);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .donate-amount:hover, .donate-amount.selected {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .donate-amount-emoji {
+    font-size: 22px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .donate-amount span:not(.donate-amount-emoji) {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .donate-amount small {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .donate-providers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .donate-provider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: opacity 0.15s, transform 0.08s;
+    text-align: center;
+  }
+  .donate-provider:active { transform: scale(0.97); }
+  .donate-paypal {
+    background: #0070ba;
+    color: #fff;
+  }
+  .donate-kofi {
+    background: #FF5E5B;
+    color: #fff;
+  }
+
+  /* ====== SUPPORTERS LIST ====== */
+  .supporters-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 4px;
+  }
+  .supporter-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--bg);
+    border-radius: var(--radius-md);
+    margin-bottom: 8px;
+    border: 1px solid var(--line);
+  }
+  .supporter-emoji {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .supporter-info { flex: 1; min-width: 0; }
+  .supporter-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .supporter-msg {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .supporters-empty {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ====== TRASPARENZA ====== */
+  .transparency-content {
+    padding: 4px 2px;
+    max-height: 380px;
+    overflow-y: auto;
+  }
+  .transparency-content h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 14px 0 6px;
+  }
+  .transparency-content h4:first-child { margin-top: 4px; }
+  .transparency-content p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 4px;
+  }
+
+  /* Banner promemoria donazione (30 giorni) */
+  .donate-reminder-banner {
+    position: fixed;
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    left: 16px;
+    right: 16px;
+    background: var(--ink);
+    color: var(--surface);
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    z-index: 90;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    animation: bannerSlideUp 0.4s cubic-bezier(0.32,0.72,0,1);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .donate-reminder-banner.visible { display: flex; }
+  @keyframes bannerSlideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .donate-reminder-text {
+    flex: 1;
+    font-size: 13px;
+    line-height: 1.4;
+    min-width: 0;
+  }
+  .donate-reminder-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .donate-reminder-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .donate-reminder-close {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--surface);
+    padding: 8px 10px;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
   /* ====== ONBOARDING ====== */
   .onboarding-backdrop {
     display: none;
@@ -1762,11 +2031,17 @@
       <input type="search" class="search-input" id="searchInput" placeholder="Cerca titolo o autore…" autocomplete="off" />
       <button class="search-clear" id="searchClear" title="Cancella">✕</button>
     </div>
-    <div class="sort-bar">
-      <span class="sort-bar-label">Ordina</span>
-      <button class="sort-chip active" data-sort="name">Alfabetico</button>
-      <button class="sort-chip" data-sort="author">Autore</button>
-      <button class="sort-chip" data-sort="progress">Completamento</button>
+    <div class="toolbar-bottom">
+      <div class="sort-bar">
+        <span class="sort-bar-label">Ordina</span>
+        <button class="sort-chip active" data-sort="name">Alfabetico</button>
+        <button class="sort-chip" data-sort="author">Autore</button>
+        <button class="sort-chip" data-sort="progress">Completamento</button>
+      </div>
+      <div class="view-switcher">
+        <button class="view-chip active" id="viewBtnList" data-view="list" title="Vista lista">☰</button>
+        <button class="view-chip" id="viewBtnCovers" data-view="covers" title="Vista copertine">⊞</button>
+      </div>
     </div>
   </div>
 
@@ -2013,6 +2288,92 @@
   </div>
 </div>
 
+<!-- ================== MODALE DONAZIONE ================== -->
+<div class="modal-backdrop" id="donateModal">
+  <div class="modal donate-modal">
+    <div class="donate-header">
+      <span class="donate-big-emoji">☕</span>
+      <h3>Grazie di esistere!</h3>
+    </div>
+    <div class="donate-message">
+      Ciao, sono <strong>Alex</strong>. Tankōbon nasce dalla mia passione per i manga e resta gratuita per sempre, senza pubblicità né tracciamento.<br><br>
+      Se la trovi utile, un piccolo contributo mi aiuta a tenerla viva e a sviluppare nuove funzionalità.
+    </div>
+
+    <div class="donate-amounts">
+      <button class="donate-amount" data-amount="2"><span class="donate-amount-emoji">☕</span><span>2 €</span><small>Caffè</small></button>
+      <button class="donate-amount" data-amount="5"><span class="donate-amount-emoji">🍕</span><span>5 €</span><small>Pizza</small></button>
+      <button class="donate-amount" data-amount="10"><span class="donate-amount-emoji">🚀</span><span>10 €</span><small>Razzo</small></button>
+    </div>
+
+    <div class="donate-providers">
+      <a href="https://paypal.me/AlexLeto86" target="_blank" rel="noopener" class="donate-provider donate-paypal" id="donatePaypal">
+        <span>PayPal</span>
+      </a>
+      <a href="https://ko-fi.com/fandronius" target="_blank" rel="noopener" class="donate-provider donate-kofi" id="donateKofi">
+        <span>Ko-fi</span>
+      </a>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="btn" id="donateClose" style="width:100%">Magari un'altra volta</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================== MODALE SUPPORTERS ================== -->
+<div class="modal-backdrop" id="supportersModal">
+  <div class="modal">
+    <h3>💖 Grazie a queste persone</h3>
+    <div class="modal-sub">Chi ha sostenuto Tankōbon con una donazione</div>
+
+    <div class="supporters-list" id="supportersList">
+      <!-- popolato via JS -->
+    </div>
+
+    <div class="modal-sub" style="margin-top:18px;text-align:center;font-size:12px">
+      Vuoi essere nella lista? Dopo aver donato scrivimi a<br>
+      <a href="mailto:fandroleto@gmail.com" style="color:var(--accent);font-weight:600">fandroleto@gmail.com</a>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="btn" id="supportersClose" style="width:100%">Chiudi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================== MODALE TRASPARENZA ================== -->
+<div class="modal-backdrop" id="transparencyModal">
+  <div class="modal">
+    <h3>🔍 Come funziona Tankōbon</h3>
+    <div class="modal-sub">Trasparenza totale</div>
+
+    <div class="transparency-content">
+      <h4>I tuoi dati</h4>
+      <p>Tutto resta sul tuo dispositivo, in IndexedDB del browser. Nessun account, nessun cloud, nessun tracciamento. Backup manuale via JSON dal menu.</p>
+
+      <h4>Cosa costa l'app</h4>
+      <p>Hosting su GitHub Pages: <strong>0 €</strong>.<br>
+      Dominio: <strong>0 €</strong>.<br>
+      API esterne (Jikan, Google Translate): <strong>0 €</strong>.<br>
+      Tempo di sviluppo: <strong>tanto, ma è una passione</strong>.</p>
+
+      <h4>Perché chiedere donazioni?</h4>
+      <p>Le donazioni non coprono costi tecnici (non ci sono), sono pura gratitudine. Mi motivano a continuare lo sviluppo e mi fanno sapere che l'app è utile a qualcuno.</p>
+
+      <h4>Promesse</h4>
+      <p>Tankōbon resterà <strong>sempre gratuita</strong>, <strong>senza pubblicità</strong>, <strong>senza tracking</strong>. Non venderò mai i tuoi dati (anche perché non li ho).</p>
+
+      <h4>Codice</h4>
+      <p>Il codice è pubblico su <a href="https://github.com/fandronius/tankobon" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">GitHub</a>. Puoi controllare cosa fa l'app.</p>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="btn" id="transparencyClose" style="width:100%">Chiudi</button>
+    </div>
+  </div>
+</div>
+
 <!-- ================== MODALE USCITA ================== -->
 <div class="modal-backdrop" id="exitModal">
   <div class="modal">
@@ -2050,7 +2411,7 @@
     <h4>Condividi</h4>
     <button class="menu-item" id="checkUpdateBtn">
       <span>↻ &nbsp;Verifica aggiornamenti</span>
-      <span class="menu-item-hint" id="checkUpdateHint">v1.11.7 installata</span>
+      <span class="menu-item-hint" id="checkUpdateHint">v1.12.0 installata</span>
     </button>
     <button class="menu-item" id="shareAppBtn">
       <span>↗ &nbsp;Condividi l'app</span>
@@ -2069,18 +2430,28 @@
       <span>🗑 &nbsp;Reset cache app</span>
       <span class="menu-item-hint">Risolve problemi di connessione</span>
     </button>
-    <a class="coffee-btn" href="https://paypal.me/AlexLeto86" target="_blank" rel="noopener">
+    <button class="coffee-btn" id="donateBtn">
       <span class="coffee-emoji">☕</span>
       <span class="coffee-text">
         <strong>Offrimi un caffè</strong>
-        <span class="coffee-sub">Tankōbon è gratis. Se ti piace e la trovi utile, supportala con una piccola donazione. Grazie!</span>
+        <span class="coffee-sub">Tankōbon è gratis e senza pubblicità. Un piccolo gesto di gratitudine se la trovi utile.</span>
       </span>
-    </a>
+    </button>
+
+    <button class="menu-item" id="supportersBtn">
+      <span>💖 &nbsp;Wall of Supporters</span>
+      <span class="menu-item-hint">Chi rende possibile Tankōbon</span>
+    </button>
+
+    <button class="menu-item" id="transparencyBtn">
+      <span>🔍 &nbsp;Come funziona Tankōbon</span>
+      <span class="menu-item-hint">Trasparenza e costi</span>
+    </button>
 
     <button class="menu-item" id="closeMenuBtn" style="color: var(--muted); justify-content:center">Chiudi</button>
 
     <div class="version-block">
-      <div class="version-number">v1.11.7</div>
+      <div class="version-number">v1.12.0</div>
       <div class="version-author">
         di <a href="mailto:fandroleto@gmail.com?subject=Tankōbon%20-%20Suggerimenti" style="color:var(--accent);text-decoration:none;font-weight:600">Fandronius</a>
       </div>
@@ -2117,6 +2488,16 @@
       <button id="isbnManualGo">OK</button>
     </div>
     <button class="scanner-close-btn" id="scannerCloseBtn">Annulla</button>
+  </div>
+</div>
+
+<div class="donate-reminder-banner" id="donateReminderBanner">
+  <span class="donate-reminder-text">
+    ☕ Stai usando Tankōbon da un mese! Se ti piace, considera un caffè.
+  </span>
+  <div class="donate-reminder-actions">
+    <button class="donate-reminder-btn" id="donateReminderOpen">Sì</button>
+    <button class="donate-reminder-close" id="donateReminderDismiss">Chiudi</button>
   </div>
 </div>
 
@@ -2185,7 +2566,7 @@
    - Scansione ISBN via fotocamera (BarcodeDetector + ZXing fallback)
    ========================================================================= */
 
-const APP_VERSION = '1.11.7';
+const APP_VERSION = '1.12.0';
 const DB_NAME = 'MangaTrackerDB';
 const DB_VERSION = 1;
 const STORE = 'series';
@@ -2195,6 +2576,7 @@ const LS_TAB = 'mangaTracker.tab';
 const LS_TAG_FILTER = 'mangaTracker.tagFilter';
 const LS_CUSTOM_TAGS = 'mangaTracker.customTags';
 const LS_REC_CACHE = 'mangaTracker.recCache';
+const LS_VIEW = 'mangaTracker.viewMode';
 
 /* Tag preimpostati con colori coerenti */
 const PRESET_TAGS = [
@@ -2238,6 +2620,7 @@ let pendingPlot = '';        // plot/sinossi della serie
 let pendingTotalVolumes = null; // numero volumi suggerito (da Jikan o input utente)
 let currentSort = 'name';
 let currentTab = 'collection';
+let currentViewMode = 'list';
 let currentQuery = '';
 let currentTagFilter = null; // id del tag filtro attivo
 let newKind = 'collection';
@@ -2457,6 +2840,15 @@ function setSort(mode) {
   renderSeriesList();
 }
 
+function setView(mode) {
+  currentViewMode = mode;
+  localStorage.setItem(LS_VIEW, mode);
+  document.querySelectorAll('.view-chip').forEach(b => {
+    b.classList.toggle('active', b.dataset.view === mode);
+  });
+  renderSeriesList();
+}
+
 /* ---------- Filtro ---------- */
 function filterByQuery(arr, q) {
   if (!q) return arr;
@@ -2548,6 +2940,23 @@ function renderSeriesList() {
 
   const sorted = sortSeries(filtered, currentSort);
 
+  if (currentViewMode === 'covers') {
+    list.className = 'series-list covers-mode';
+    list.innerHTML = sorted.map(s => {
+      const letter = (s.name.trim()[0] || '?').toUpperCase();
+      const coverHtml = s.cover
+        ? `<div class="cover-thumb" style="background-image:url('${s.cover}')"></div>`
+        : `<div class="cover-thumb placeholder">${escapeHtml(letter)}</div>`;
+      return `<article class="series-card" data-id="${s.id}">${coverHtml}</article>`;
+    }).join('');
+    list.querySelectorAll('.series-card').forEach(card => {
+      card.addEventListener('click', () => openDetail(card.dataset.id));
+    });
+    updateTabCounts();
+    return;
+  }
+
+  list.className = 'series-list';
   list.innerHTML = sorted.map(s => {
     const letter = (s.name.trim()[0] || '?').toUpperCase();
     const coverHtml = s.cover
@@ -3074,7 +3483,7 @@ async function shareCurrentSeries() {
   if (s.author) params.set('author', s.author);
   const deepLink = `https://fandronius.github.io/tankobon/?${params.toString()}`;
 
-  const text = `Ciao, guarda questa serie manga, credo ti piacerà molto!\n\n📚 ${titleLine}\n\nApri questo link per aggiungerla direttamente alla tua wishlist su Tankōbon:\n${deepLink}`;
+  const text = `Ciao, guarda questa serie, credo ti piacerà molto!\n\n📚 ${titleLine}\n\nApri questo link per aggiungerla direttamente alla tua wishlist su Tankōbon:\n${deepLink}`;
 
   if (navigator.share) {
     try { await navigator.share({ title: s.name, text }); }
@@ -3122,25 +3531,57 @@ function handleCoverUpload(file) {
 }
 
 /* ---------- Jikan / MyAnimeList API (CORS-friendly, no proxy needed) ---------- */
-async function jikanFetch(path) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 12000);
-  try {
-    const res = await fetch('https://api.jikan.moe/v4' + path, {
-      method: 'GET',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: { 'Accept': 'application/json' },
-      signal: controller.signal,
-      cache: 'no-store',
-    });
-    clearTimeout(timer);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
-  } catch (err) {
-    clearTimeout(timer);
-    if (err.name === 'AbortError') throw new Error('Timeout');
-    throw err;
+async function jikanFetch(path, retries = 2) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 12000);
+    try {
+      const res = await fetch('https://api.jikan.moe/v4' + path, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: { 'Accept': 'application/json' },
+        signal: controller.signal,
+        cache: 'no-store',
+      });
+      clearTimeout(timer);
+
+      // Se è un errore 5xx (server Jikan), riprova dopo un delay
+      if (res.status >= 500 && res.status < 600) {
+        if (attempt < retries) {
+          await new Promise(r => setTimeout(r, 1500 * (attempt + 1))); // 1.5s, 3s
+          continue;
+        }
+        throw new Error(`Jikan non risponde (${res.status}) — riprova tra qualche minuto`);
+      }
+
+      // 429 = rate limit: aspetta più a lungo e riprova
+      if (res.status === 429) {
+        if (attempt < retries) {
+          await new Promise(r => setTimeout(r, 2500));
+          continue;
+        }
+        throw new Error('Troppe richieste — attendi un momento');
+      }
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      clearTimeout(timer);
+      if (err.name === 'AbortError') {
+        if (attempt < retries) {
+          await new Promise(r => setTimeout(r, 1000));
+          continue;
+        }
+        throw new Error('Timeout — controlla la connessione');
+      }
+      // Errori di rete (TypeError: Failed to fetch) → retry
+      if (err.message && err.message.includes('fetch') && attempt < retries) {
+        await new Promise(r => setTimeout(r, 1000));
+        continue;
+      }
+      throw err;
+    }
   }
 }
 
@@ -4195,6 +4636,11 @@ document.querySelectorAll('.sort-chip').forEach(c => {
   c.addEventListener('click', () => setSort(c.dataset.sort));
 });
 
+// Vista (lista / copertine)
+document.querySelectorAll('.view-chip').forEach(b => {
+  b.addEventListener('click', () => setView(b.dataset.view));
+});
+
 // Ricerca lista
 const searchInput = document.getElementById('searchInput');
 const searchClear = document.getElementById('searchClear');
@@ -4789,11 +5235,145 @@ document.getElementById('exitModalConfirm').addEventListener('click', () => {
   }, 200);
 });
 
+
+/* =========================================================================
+   SISTEMA DONAZIONI
+   ========================================================================= */
+const LS_FIRST_USE = 'mangaTracker.firstUseDate';
+const LS_DONATE_REMINDER_DISMISSED = 'mangaTracker.donateReminderDismissed';
+const PAYPAL_BASE = 'https://paypal.me/AlexLeto86';
+const KOFI_BASE = 'https://ko-fi.com/fandronius';
+
+// Lista supporters statica (aggiornabile manualmente nel codice)
+const SUPPORTERS = [
+  // Esempio:
+  // { name: 'Mario Rossi', emoji: '☕', message: 'Bellissima app, complimenti!' },
+];
+
+let selectedDonateAmount = 5;
+
+function openDonateModal() {
+  // Reset selezione default a 5€
+  selectedDonateAmount = 5;
+  document.querySelectorAll('.donate-amount').forEach(b => {
+    b.classList.toggle('selected', parseInt(b.dataset.amount) === 5);
+  });
+  updateDonateLinks();
+  document.getElementById('donateModal').classList.add('active');
+}
+
+function updateDonateLinks() {
+  // PayPal supporta importo nell'URL: paypal.me/USER/AMOUNT
+  document.getElementById('donatePaypal').href = PAYPAL_BASE + '/' + selectedDonateAmount;
+  // Ko-fi non supporta importo via URL ma il link rimane fisso
+  document.getElementById('donateKofi').href = KOFI_BASE;
+}
+
+function renderSupporters() {
+  const list = document.getElementById('supportersList');
+  if (SUPPORTERS.length === 0) {
+    list.innerHTML = '<div class="supporters-empty">Sii il primo a supportare Tankōbon ☕</div>';
+    return;
+  }
+  list.innerHTML = SUPPORTERS.map(s => `
+    <div class="supporter-item">
+      <span class="supporter-emoji">${s.emoji || '💖'}</span>
+      <div class="supporter-info">
+        <div class="supporter-name">${escapeHtml(s.name)}</div>
+        ${s.message ? `<div class="supporter-msg">"${escapeHtml(s.message)}"</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function maybeShowDonateReminder() {
+  // Mostra banner solo se: passati 30 giorni dal primo uso E non già dismissato
+  const firstUse = localStorage.getItem(LS_FIRST_USE);
+  if (!firstUse) {
+    localStorage.setItem(LS_FIRST_USE, Date.now().toString());
+    return;
+  }
+  if (localStorage.getItem(LS_DONATE_REMINDER_DISMISSED)) return;
+  const daysSinceFirstUse = (Date.now() - parseInt(firstUse, 10)) / (1000 * 60 * 60 * 24);
+  if (daysSinceFirstUse >= 30) {
+    setTimeout(() => {
+      document.getElementById('donateReminderBanner').classList.add('visible');
+    }, 3000); // appare dopo 3s dall'apertura
+  }
+}
+
+// Event listeners donazioni
+document.getElementById('donateBtn').addEventListener('click', () => {
+  document.getElementById('menuSheet').classList.remove('active');
+  setTimeout(openDonateModal, 200);
+});
+document.getElementById('donateClose').addEventListener('click', () => {
+  document.getElementById('donateModal').classList.remove('active');
+});
+document.getElementById('donateModal').addEventListener('click', (e) => {
+  if (e.target.id === 'donateModal') {
+    document.getElementById('donateModal').classList.remove('active');
+  }
+});
+document.querySelectorAll('.donate-amount').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.donate-amount').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedDonateAmount = parseInt(btn.dataset.amount, 10);
+    updateDonateLinks();
+  });
+});
+
+// Supporters
+document.getElementById('supportersBtn').addEventListener('click', () => {
+  document.getElementById('menuSheet').classList.remove('active');
+  setTimeout(() => {
+    renderSupporters();
+    document.getElementById('supportersModal').classList.add('active');
+  }, 200);
+});
+document.getElementById('supportersClose').addEventListener('click', () => {
+  document.getElementById('supportersModal').classList.remove('active');
+});
+document.getElementById('supportersModal').addEventListener('click', (e) => {
+  if (e.target.id === 'supportersModal') {
+    document.getElementById('supportersModal').classList.remove('active');
+  }
+});
+
+// Trasparenza
+document.getElementById('transparencyBtn').addEventListener('click', () => {
+  document.getElementById('menuSheet').classList.remove('active');
+  setTimeout(() => {
+    document.getElementById('transparencyModal').classList.add('active');
+  }, 200);
+});
+document.getElementById('transparencyClose').addEventListener('click', () => {
+  document.getElementById('transparencyModal').classList.remove('active');
+});
+document.getElementById('transparencyModal').addEventListener('click', (e) => {
+  if (e.target.id === 'transparencyModal') {
+    document.getElementById('transparencyModal').classList.remove('active');
+  }
+});
+
+// Banner reminder
+document.getElementById('donateReminderOpen').addEventListener('click', () => {
+  document.getElementById('donateReminderBanner').classList.remove('visible');
+  localStorage.setItem(LS_DONATE_REMINDER_DISMISSED, '1');
+  openDonateModal();
+});
+document.getElementById('donateReminderDismiss').addEventListener('click', () => {
+  document.getElementById('donateReminderBanner').classList.remove('visible');
+  localStorage.setItem(LS_DONATE_REMINDER_DISMISSED, '1');
+});
+
 /* ---------- Init ---------- */
 loadTheme();
 loadCustomTags();
 currentSort = localStorage.getItem(LS_SORT) || 'name';
 currentTab = localStorage.getItem(LS_TAB) || 'collection';
+currentViewMode = localStorage.getItem(LS_VIEW) || 'list';
 currentTagFilter = localStorage.getItem(LS_TAG_FILTER) || null;
 if (!currentTagFilter) currentTagFilter = null;
 
@@ -4802,6 +5382,9 @@ document.querySelectorAll('.sort-chip').forEach(c => {
 });
 document.querySelectorAll('.tab').forEach(t => {
   t.classList.toggle('active', t.dataset.tab === currentTab);
+});
+document.querySelectorAll('.view-chip').forEach(b => {
+  b.classList.toggle('active', b.dataset.view === currentViewMode);
 });
 
 (async () => {
@@ -4813,6 +5396,8 @@ document.querySelectorAll('.tab').forEach(t => {
     if (!history.state || !history.state.tankobon) {
       history.replaceState({ tankobon: 'main' }, '');
     }
+    // Promemoria donazione dopo 30 giorni d'uso
+    maybeShowDonateReminder();
     // Deep link ha priorità sull'onboarding: se c'è ?add=, mostra subito il modale
     const hasDeepLink = !!new URLSearchParams(window.location.search).get('add');
     if (hasDeepLink) {

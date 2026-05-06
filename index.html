@@ -275,6 +275,9 @@
     white-space: nowrap;
     border-radius: var(--radius-full);
     transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .sort-chip.active {
     background: var(--ink);
@@ -295,6 +298,9 @@
     border-radius: var(--radius-full);
     transition: all 0.15s;
     line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .view-chip.active {
     background: var(--ink);
@@ -2033,14 +2039,13 @@
     </div>
     <div class="toolbar-bottom">
       <div class="sort-bar">
-        <span class="sort-bar-label">Ordina</span>
-        <button class="sort-chip active" data-sort="name">Alfabetico</button>
-        <button class="sort-chip" data-sort="author">Autore</button>
-        <button class="sort-chip" data-sort="progress">Completamento</button>
+        <button class="sort-chip active" data-sort="name" title="Ordina per titolo">A–Z</button>
+        <button class="sort-chip" data-sort="author" title="Ordina per autore"><svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor" aria-hidden="true"><circle cx="7.5" cy="5" r="2.5"/><path d="M1.5 15c0-3.314 2.686-6 6-6s6 2.686 6 6z"/></svg></button>
+        <button class="sort-chip" data-sort="progress" title="Ordina per completamento">%</button>
       </div>
       <div class="view-switcher">
-        <button class="view-chip active" id="viewBtnList" data-view="list" title="Vista lista">☰</button>
-        <button class="view-chip" id="viewBtnCovers" data-view="covers" title="Vista copertine">⊞</button>
+        <button class="view-chip active" id="viewBtnList" data-view="list" title="Vista lista"><svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor" aria-hidden="true"><rect x="0" y="0.5" width="5" height="5" rx="1"/><rect x="7" y="1.5" width="8" height="1.5" rx="0.75"/><rect x="7" y="4" width="5" height="1" rx="0.5"/><rect x="0" y="9" width="5" height="5" rx="1"/><rect x="7" y="10" width="8" height="1.5" rx="0.75"/><rect x="7" y="12.5" width="5" height="1" rx="0.5"/></svg></button>
+        <button class="view-chip" id="viewBtnCovers" data-view="covers" title="Vista copertine"><svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor" aria-hidden="true"><rect x="0" y="0" width="6" height="6" rx="1.5"/><rect x="9" y="0" width="6" height="6" rx="1.5"/><rect x="0" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg></button>
       </div>
     </div>
   </div>
@@ -4841,6 +4846,16 @@ document.getElementById('onboardingSkip').addEventListener('click', closeOnboard
 
 const APP_BASE_URL = 'https://fandronius.github.io/tankobon/';
 
+function isNewerVersion(remote, local) {
+  const r = remote.split('.').map(Number);
+  const l = local.split('.').map(Number);
+  for (let i = 0; i < 3; i++) {
+    if ((r[i] || 0) > (l[i] || 0)) return true;
+    if ((r[i] || 0) < (l[i] || 0)) return false;
+  }
+  return false;
+}
+
 async function checkForUpdate(showResult = false) {
   const hintEl = document.getElementById('checkUpdateHint');
   if (hintEl) hintEl.textContent = 'Controllo in corso…';
@@ -4864,7 +4879,7 @@ async function checkForUpdate(showResult = false) {
       return;
     }
 
-    if (remoteVersion !== APP_VERSION) {
+    if (isNewerVersion(remoteVersion, APP_VERSION)) {
       showUpdateModal(APP_VERSION, remoteVersion);
     } else {
       if (showResult) toast('Sei già alla versione più recente (' + APP_VERSION + ')');

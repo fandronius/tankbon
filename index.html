@@ -360,6 +360,7 @@
   }
   .tag-filter-bar::-webkit-scrollbar { display: none; }
   .tag-filter-bar:empty { display: none; }
+  .tag-filter-bar::after { content: ''; min-width: 20px; flex-shrink: 0; }
 
   .tag-chip {
     display: inline-flex;

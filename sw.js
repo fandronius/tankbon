@@ -1,5 +1,5 @@
-// Service Worker v1.10.0
-const CACHE = 'manga-tracker-v9';
+// Service Worker v1.12.0
+const CACHE = 'manga-tracker-v10';
 const ASSETS = [
   './',
   './index.html',
